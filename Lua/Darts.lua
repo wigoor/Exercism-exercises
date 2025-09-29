@@ -1,25 +1,16 @@
 local Darts = {}
 
 function Darts.score(x, y)
-    if (x^2 + y^2 <= 1^2) then
-        print "10 hit"
-        return 10
-    elseif (x^2 + y^2 < 5^2) then
-        print "5 hit"
-        return 5
-    elseif (x^2 + y^2 == 5^2) then
-        print "5 edge"
-        return 5
-    elseif (x^2 + y^2 < 10^2) then
-        print "1 hit"
-        return 1
-    elseif x^2 + y^2 == 10^2 then
-        print "1 edge"
-        return 1
-    elseif x^2 + y^2 > 10^2 then
-        print "0 miss"
-        return 0
+    local dartDistance = x^2 + y^2
+    local score = 0
+    if (dartDistance <= 1) then
+        score = 10
+    elseif (dartDistance <= 5^2) then
+        score = 5
+    elseif (dartDistance <= 10^2) then
+        score = 1
     end
+    return score
 end
 
 assert(Darts.score(-9, 9) == 0)
